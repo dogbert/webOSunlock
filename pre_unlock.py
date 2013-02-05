@@ -239,6 +239,8 @@ def get_codes(c, l=8):
 			s = p + 2
 		else:
 			break
+		if 2*l+s > len(c):
+			break
 		o = ""
 		for i in range(0, l):
 			o += chr(ord(c[i+s])^ord(c[i+s+l]))
