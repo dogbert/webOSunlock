@@ -309,7 +309,7 @@ def findSerialPorts(portName):
 	return None
 
 def info():
-	print "pre3_veer_unlock.py v1.5"
+	print "pre3_veer_unlock.py v1.6"
 	print "Copyright (c) 2011 dogbert <dogber1@gmail.com>, http://dogber1.blogspot.com"
 	print "This script reads the unlock code of HP Veer/Pre3 phones."
 	print ""
@@ -335,7 +335,7 @@ def main():
 		sys.exit(2)
 
 	diagPort  = None
-	baud	  = 921600
+	baud	  = 115200 
 	Init	  = True
 	writeBack = False 
 	persoFile = None
@@ -366,7 +366,7 @@ def main():
 	print "Diagnostics serial port: %s" % diagPort
 	print ""
 	
-	ser = serial.Serial(diagPort, baud, timeout=0)
+	ser = serial.Serial(diagPort, baud, timeout=0, rtscts=0)
 	getInfo(ser)
 	build = getBuildID(ser)
 	(imei, imsi) = getGSMStatus(ser)
